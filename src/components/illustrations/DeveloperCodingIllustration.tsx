@@ -306,3 +306,4 @@ export function DeveloperCodingIllustration({ className = "" }: { className?: st
     </div>
   );
 }
+

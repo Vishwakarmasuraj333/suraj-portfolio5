@@ -43,11 +43,10 @@ export function MobileMenu({
       <div className="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-[#FCFAF8] dark:bg-[#0B1120] border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between p-6 overflow-y-auto">
         {/* Top Header */}
         <div className="flex items-center justify-between pb-5 border-b border-slate-200 dark:border-slate-800">
-          <div className="flex items-center">
-            <span className="font-extrabold text-2xl tracking-tight text-[#0F172A] dark:text-white">
+          <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-slate-900 dark:bg-slate-800 border border-slate-700/60">
+            <span className="font-black text-sm text-white">
               SV
             </span>
-            <span className="inline-block w-2.5 h-2.5 rounded-full bg-rose-500 ml-0.5" />
           </div>
 
           <div className="flex items-center gap-2">
@@ -88,7 +87,7 @@ export function MobileMenu({
         </nav>
 
         {/* Bottom Actions */}
-        <div className="pt-6 border-t border-slate-200 dark:border-slate-800 space-y-4">
+        <div className="pt-6 border-t border-slate-200 dark:border-slate-800 space-y-3">
           <Button
             variant="primary"
             size="md"
@@ -99,7 +98,15 @@ export function MobileMenu({
             Let&apos;s Talk <ArrowRight className="w-4 h-4 ml-0.5" />
           </Button>
 
-          <div className="flex items-center justify-center gap-4 text-slate-600 dark:text-slate-400">
+          <a
+            href="/resume.pdf"
+            download="Suraj_Vishwakarma_Resume.pdf"
+            className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-2xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 font-bold text-xs border border-rose-200 dark:border-rose-900/40 hover:bg-rose-100 transition-colors"
+          >
+            Download Resume (PDF)
+          </a>
+
+          <div className="flex items-center justify-center gap-4 text-slate-600 dark:text-slate-400 pt-1">
             <a
               href={siteConfig.links.github}
               target="_blank"

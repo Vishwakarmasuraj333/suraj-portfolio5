@@ -4,7 +4,7 @@ export interface Project {
   id: string;
   title: string;
   subtitle: string;
-  category: "Food & Delivery" | "E-Commerce" | "Finance" | "Health & Fitness" | "AI & Cloud" | "Developer Tools";
+  category: string;
   tagline: string;
   description: string;
   longDescription: string;

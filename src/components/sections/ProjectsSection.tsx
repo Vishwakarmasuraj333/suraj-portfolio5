@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/site-config";
 export function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
-  const filterTabs = ["All", "Food & Delivery", "E-Commerce", "Finance", "AI & Cloud", "Developer Tools"];
+  const filterTabs = ["All", ...Array.from(new Set(projects.map((p) => p.category)))];
 
   const filteredProjects = projects.filter((project) => {
     if (activeFilter === "All") return true;

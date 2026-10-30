@@ -8,14 +8,15 @@ import {
   GraduationCap,
   Sparkles,
   Coffee,
+  CheckCircle2,
 } from "lucide-react";
 
 export function AboutSection() {
   const stats = [
     {
-      value: "9.0",
-      label: "CGPA (Excellence)",
-      sub: "B.Sc. IT Topper",
+      value: "9.04",
+      label: "CGPA (A Grade)",
+      sub: "University of Mumbai",
       icon: Award,
       bg: "bg-rose-100 dark:bg-rose-950/60",
       border: "border-rose-200 dark:border-rose-900/40",
@@ -24,25 +25,25 @@ export function AboutSection() {
     {
       value: "2025",
       label: "Grad Year",
-      sub: "Abhinav College",
+      sub: "B.Sc. Information Tech",
       icon: GraduationCap,
       bg: "bg-emerald-100 dark:bg-emerald-950/60",
       border: "border-emerald-200 dark:border-emerald-900/40",
       text: "text-emerald-600 dark:text-emerald-400",
     },
     {
-      value: "M.Sc.",
-      label: "Information Tech",
-      sub: "Currently Pursuing",
+      value: "4+",
+      label: "Certifications",
+      sub: "FreeCodeCamp & Simplilearn",
       icon: Sparkles,
       bg: "bg-purple-100 dark:bg-purple-950/60",
       border: "border-purple-200 dark:border-purple-900/40",
       text: "text-purple-600 dark:text-purple-400",
     },
     {
-      value: "15+",
-      label: "Projects Built",
-      sub: "∞ Cups of Coffee",
+      value: "5+",
+      label: "Deployed Projects",
+      sub: "ReactJS & Modern Web",
       icon: Coffee,
       bg: "bg-amber-100 dark:bg-amber-950/60",
       border: "border-amber-200 dark:border-amber-900/40",
@@ -74,23 +75,23 @@ export function AboutSection() {
               {/* Headline */}
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F172A] dark:text-white tracking-tight leading-[1.2] mb-5">
                 Building apps <br />
-                <span className="text-[#0F172A] dark:text-white">with purpose</span>
+                <span className="text-[#0F172A] dark:text-white">with clean code & purpose</span>
               </h2>
 
               {/* Bio Description with Real Details */}
               <div className="space-y-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal mb-8">
                 <p>
-                  I&apos;m Suraj, a Full Stack Developer with a strong academic foundation and hands-on experience building modern, responsive, and scalable web applications. I love turning ambitious ideas into high-quality software with clean code, intuitive user experience, and modern technology stacks.
+                  I&apos;m <strong>Suraj Vishwakarma</strong>, a motivated Frontend Developer skilled in <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript (ES6+)</strong>, <strong>ReactJS</strong>, and <strong>Tailwind CSS</strong>. I focus on building clean, responsive, and user-friendly interfaces.
                 </p>
                 <p>
-                  Graduated with a <strong>B.Sc. in Information Technology (2025)</strong> from <strong>Abhinav College, Bhayandar</strong> with an outstanding <strong>9.0 CGPA</strong>, and currently expanding my technical mastery through <strong>M.Sc. Information Technology</strong>.
+                  Passionate about performance optimization, clean code, and transforming UI/UX concepts into fast, accessible web experiences. I have built and deployed multiple real-world web projects utilizing modern version control with Git/GitHub and leveraging AI tools for debugging and workflow optimization.
                 </p>
                 <p>
-                  Certified in <strong>JavaScript and Web Development by Simplilearn</strong>, I combine frontend finesse with robust backend microservices, RESTful APIs, and database engineering.
+                  Graduated with a <strong>B.Sc. in Information Technology (2022 – 2025)</strong> from the <strong>University of Mumbai</strong> with an outstanding <strong>9.04 CGPA (A Grade)</strong>, backed by verified credentials from <strong>FreeCodeCamp</strong> and <strong>Simplilearn</strong>.
                 </p>
               </div>
 
-              {/* 4 Stat Badges matching the screenshot */}
+              {/* 4 Stat Badges matching the design */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full">
                 {stats.map((stat, idx) => {
                   const Icon = stat.icon;

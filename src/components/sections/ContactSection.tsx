@@ -17,12 +17,15 @@ import {
   Loader2,
   Copy,
   Check,
+  Phone,
+  FileText,
 } from "lucide-react";
 import { Button } from "../ui/Button";
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
   const [submitResult, setSubmitResult] = useState<{
     success: boolean;
     message: string;
@@ -47,6 +50,12 @@ export function ContactSection() {
     navigator.clipboard.writeText(siteConfig.links.rawEmail);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2500);
+  };
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText(siteConfig.links.rawPhone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2500);
   };
 
   const onSubmit = async (data: ContactFormInput) => {
@@ -114,31 +123,69 @@ export function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start max-w-5xl mx-auto">
           {/* Left Column: Direct info & social cards */}
           <div className="lg:col-span-5 space-y-6">
-            {/* Quick copy email box */}
-            <div className="p-6 rounded-3xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 shadow-soft">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-400 block mb-2">
-                Direct Email
-              </span>
-              <div className="flex items-center justify-between gap-2 p-3 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-750 mb-3">
-                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 truncate">
-                  {siteConfig.links.rawEmail}
+            {/* Quick contact box: Email & Phone */}
+            <div className="p-6 rounded-3xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 shadow-soft space-y-4">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-400 block mb-2">
+                  Direct Email
                 </span>
-                <button
-                  type="button"
-                  onClick={handleCopyEmail}
-                  className="p-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-rose-500 dark:hover:text-rose-400 hover:bg-white dark:hover:bg-slate-800 transition-all shrink-0"
-                  aria-label="Copy email address"
-                >
-                  {copiedEmail ? (
-                    <Check className="w-4 h-4 text-emerald-500" />
-                  ) : (
-                    <Copy className="w-4 h-4" />
-                  )}
-                </button>
+                <div className="flex items-center justify-between gap-2 p-3 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-750">
+                  <a
+                    href={siteConfig.links.email}
+                    className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 truncate hover:text-rose-500"
+                  >
+                    {siteConfig.links.rawEmail}
+                  </a>
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="p-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-rose-500 dark:hover:text-rose-400 hover:bg-white dark:hover:bg-slate-800 transition-all shrink-0"
+                    aria-label="Copy email address"
+                  >
+                    {copiedEmail ? (
+                      <Check className="w-4 h-4 text-emerald-500" />
+                    ) : (
+                      <Copy className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                {copiedEmail ? "✓ Copied to clipboard!" : "Click to copy email or send via the form."}
-              </p>
+
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-400 block mb-2">
+                  Phone / WhatsApp
+                </span>
+                <div className="flex items-center justify-between gap-2 p-3 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-750">
+                  <a
+                    href={siteConfig.links.phone}
+                    className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 truncate hover:text-rose-500"
+                  >
+                    {siteConfig.links.rawPhone}
+                  </a>
+                  <button
+                    type="button"
+                    onClick={handleCopyPhone}
+                    className="p-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-rose-500 dark:hover:text-rose-400 hover:bg-white dark:hover:bg-slate-800 transition-all shrink-0"
+                    aria-label="Copy phone number"
+                  >
+                    {copiedPhone ? (
+                      <Check className="w-4 h-4 text-emerald-500" />
+                    ) : (
+                      <Copy className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <a
+                  href="/resume.pdf"
+                  download="Suraj_Vishwakarma_Resume.pdf"
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-rose-700 dark:text-rose-300 font-bold text-xs transition-colors"
+                >
+                  <FileText className="w-4 h-4" /> Download Official Resume (PDF)
+                </a>
+              </div>
             </div>
 
             {/* Location & Availability */}

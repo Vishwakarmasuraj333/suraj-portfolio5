@@ -1,5 +1,14 @@
 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100" height="100" rx="24" fill="#0F172A" />
-  <text x="38" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="-2">SV</text>
-  <circle cx="75" cy="62" r="7" fill="#F43F5E" />
+  <defs>
+    <linearGradient id="sv-bg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+    <linearGradient id="sv-txt" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F1F5F9" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="26" fill="url(#sv-bg)" stroke="#334155" stroke-width="3" />
+  <text x="50" y="67" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="48" font-weight="900" fill="url(#sv-txt)" text-anchor="middle" letter-spacing="-1.5">SV</text>
 </svg>

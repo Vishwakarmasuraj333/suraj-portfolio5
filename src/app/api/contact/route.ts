@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
     // 4. Check for Email Delivery Provider (e.g. Resend)
     const resendApiKey = process.env.RESEND_API_KEY;
     const recipientEmail =
-      process.env.CONTACT_EMAIL || "surajvishwakarma333@gmail.com";
+      process.env.CONTACT_EMAIL || "itxsurajofficial@gmail.com";
 
     let emailSent = false;
     let providerNote = "";

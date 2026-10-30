@@ -142,3 +142,4 @@ export function HighFiveIllustration({ className = "" }: { className?: string })
     </div>
   );
 }
+
