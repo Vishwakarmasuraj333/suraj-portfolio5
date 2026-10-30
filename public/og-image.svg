@@ -1,38 +1,82 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="maroonBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#401421" />
-      <stop offset="50%" stop-color="#2B1019" />
-      <stop offset="100%" stop-color="#1C1015" />
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0B1120" />
+      <stop offset="50%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E293B" />
     </linearGradient>
-    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F5E8C7" />
-      <stop offset="50%" stop-color="#D6B477" />
-      <stop offset="100%" stop-color="#8C6C35" />
+    <linearGradient id="roseGlow" x1="0" y1="0" x2="600" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F43F5E" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#FB7185" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="amberGlow" x1="1200" y1="630" x2="600" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F1F5F9" />
     </linearGradient>
   </defs>
 
-  <rect width="1200" height="630" fill="url(#maroonBg)" />
-  <rect x="40" y="40" width="1120" height="550" rx="20" stroke="#D6B477" stroke-opacity="0.3" stroke-width="2" />
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="200" cy="150" r="300" fill="url(#roseGlow)" />
+  <circle cx="1000" cy="500" r="350" fill="url(#amberGlow)" />
+  <rect x="30" y="30" width="1140" height="570" rx="28" stroke="#334155" stroke-opacity="0.6" stroke-width="2" />
 
-  <!-- SV Monogram -->
-  <g transform="translate(100, 100)">
-    <polygon points="30,6 70,6 94,30 94,70 70,94 30,94 6,70 6,30" stroke="url(#goldText)" stroke-width="3" fill="#641E32" />
-    <path d="M 64 28 C 64 22, 42 20, 36 28 C 30 36, 44 42, 54 48 C 66 54, 70 64, 62 74 C 54 84, 34 82, 32 72" stroke="url(#goldText)" stroke-width="5" stroke-linecap="round" />
-    <path d="M 44 38 L 56 68 L 72 38" stroke="url(#goldText)" stroke-width="4.5" stroke-linecap="round" />
+  <!-- SV Monogram Badge -->
+  <g transform="translate(80, 75)">
+    <rect width="70" height="70" rx="20" fill="#1E293B" stroke="#475569" stroke-width="2" />
+    <text x="35" y="47" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">SV</text>
   </g>
 
-  <!-- Titles -->
-  <text x="240" y="160" font-family="serif" font-size="48" fill="#F7F1E8" font-weight="bold">SURAJ VISHWAKARMA</text>
-  <text x="240" y="210" font-family="sans-serif" font-size="24" fill="#D6B477" letter-spacing="4">FULL STACK DEVELOPER — DIGITAL EXPERIENCES</text>
+  <!-- Name & Title -->
+  <text x="170" y="112" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="800" fill="#FFFFFF">Suraj Vishwakarma</text>
+  <text x="170" y="138" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#F43F5E" letter-spacing="1.5">FULL STACK DEVELOPER</text>
 
-  <text x="100" y="340" font-family="serif" font-size="44" fill="#FCFAF6">Building Digital Experiences That Work.</text>
-  <text x="100" y="400" font-family="sans-serif" font-size="24" fill="#EFE4D4" opacity="0.8">Next.js • React • Node.js • Python • FastAPI • PostgreSQL • Modern 3D Web</text>
+  <!-- Available for Work Pill -->
+  <g transform="translate(930, 85)">
+    <rect width="190" height="42" rx="21" fill="#064E3B" stroke="#059669" stroke-width="1.5" />
+    <circle cx="24" cy="21" r="5" fill="#10B981" />
+    <text x="38" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#A7F3D0">Available for Work</text>
+  </g>
 
-  <!-- Projects -->
-  <text x="100" y="490" font-family="monospace" font-size="20" fill="#D6B477">✦ IntelliTwin AI (Cyber ML)</text>
-  <text x="460" y="490" font-family="monospace" font-size="20" fill="#D6B477">✦ Nexora Social (Workflows)</text>
-  <text x="830" y="490" font-family="monospace" font-size="20" fill="#D6B477">✦ SE Ranking (Analytics)</text>
+  <!-- Main Headline -->
+  <text x="80" y="245" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="900" fill="#FFFFFF" letter-spacing="-1">
+    I build digital products that people love.
+  </text>
+  <text x="80" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="500" fill="#94A3B8">
+    Crafting clean, responsive, and high-performance web applications with modern architecture.
+  </text>
 
-  <text x="100" y="550" font-family="monospace" font-size="18" fill="#BCA3A8">GitHub: @Vishwakarmasuraj333 | Location: Mumbai / Bhayandar, India</text>
+  <!-- Academic Distinction Card -->
+  <g transform="translate(80, 350)">
+    <rect width="320" height="90" rx="18" fill="#1E293B" stroke="#F43F5E" stroke-opacity="0.4" stroke-width="1.5" />
+    <text x="25" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" fill="#FB7185" letter-spacing="1">ACADEMIC DISTINCTION</text>
+    <text x="25" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="#FFFFFF">9.04 CGPA (A Grade)</text>
+    <text x="200" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#94A3B8">B.Sc. IT • Mumbai Univ</text>
+  </g>
+
+  <!-- Tech Stack Card -->
+  <g transform="translate(425, 350)">
+    <rect width="400" height="90" rx="18" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <text x="25" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" fill="#38BDF8" letter-spacing="1">CORE TECH STACK</text>
+    <text x="25" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#F1F5F9">React • Next.js • Node.js • Tailwind • JS</text>
+  </g>
+
+  <!-- Certifications Card -->
+  <g transform="translate(850, 350)">
+    <rect width="270" height="90" rx="18" fill="#1E293B" stroke="#F59E0B" stroke-opacity="0.4" stroke-width="1.5" />
+    <text x="25" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" fill="#FBBF24" letter-spacing="1">VERIFIED CREDENTIALS</text>
+    <text x="25" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">FreeCodeCamp &amp; Simplilearn</text>
+  </g>
+
+  <!-- Bottom Link Footer Bar -->
+  <g transform="translate(80, 485)">
+    <rect width="1040" height="65" rx="16" fill="#0B132B" stroke="#1E293B" stroke-width="1.5" />
+    <text x="35" y="38" font-family="monospace" font-size="16" font-weight="700" fill="#F43F5E">🌐 suraj-portfolio5.vercel.app</text>
+    <text x="440" y="38" font-family="monospace" font-size="15" font-weight="600" fill="#94A3B8">GitHub: @Vishwakarmasuraj333</text>
+    <text x="790" y="38" font-family="monospace" font-size="15" font-weight="600" fill="#38BDF8">itxsurajofficial@gmail.com</text>
+  </g>
 </svg>
