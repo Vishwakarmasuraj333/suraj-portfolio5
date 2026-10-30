@@ -3,114 +3,132 @@
 @tailwind utilities;
 
 :root {
-  --color-maroon-950: #1C1015;
-  --color-maroon-900: #2B1019;
-  --color-maroon-850: #35121D;
-  --color-maroon-800: #401421;
-  --color-maroon-700: #641E32;
-  --color-maroon-600: #7D293F;
-  --color-gold-500: #D6B477;
-  --color-gold-400: #E8D2A1;
-  --color-ivory-100: #FCFAF6;
-  --color-ivory-200: #F7F1E8;
-  --color-ivory-300: #EFE4D4;
+  --color-cream-bg: #FCFAF8;
+  --color-cream-card: #FFFFFF;
+  --color-pink-accent: #F43F5E;
+  --color-pink-soft: #FFF1F4;
+  --color-heading: #0F172A;
+  --color-body: #475569;
+  --color-border: #E2E8F0;
+}
+
+html.dark {
+  --color-cream-bg: #0B1120;
+  --color-cream-card: #131D33;
+  --color-pink-accent: #F43F5E;
+  --color-pink-soft: #18233D;
+  --color-heading: #F8FAFC;
+  --color-body: #94A3B8;
+  --color-border: #1E293B;
+  background-color: #0B1120;
+  color: #F8FAFC;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
-  background-color: #1C1015;
-  color: #F7F1E8;
+  scroll-padding-top: 5.5rem;
+  background-color: var(--color-cream-bg);
+  color: var(--color-heading);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Light Theme overrides */
-html:not(.dark) {
-  background-color: #F7F1E8;
-  color: #2B1019;
+body {
+  background-color: var(--color-cream-bg);
+  color: var(--color-body);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-html:not(.dark) body {
-  background-color: #FAF6F0;
-  color: #2B1019;
+/* Custom Highlight underline scribble */
+.brush-underline {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
 }
 
-html:not(.dark) .bg-maroon-950 {
-  background-color: #F4ECE1 !important;
+.brush-underline::after {
+  content: "";
+  position: absolute;
+  left: -4%;
+  bottom: -6px;
+  width: 108%;
+  height: 9px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 250 20' preserveAspectRatio='none'%3E%3Cpath d='M3 14 C 50 6, 120 18, 245 8 C 210 16, 140 10, 5 17' stroke='%23F43F5E' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' fill='none' opacity='0.75'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
 }
 
-html:not(.dark) .bg-maroon-900\/80,
-html:not(.dark) .bg-maroon-900\/70,
-html:not(.dark) .bg-maroon-900\/60,
-html:not(.dark) .bg-maroon-900\/50,
-html:not(.dark) .bg-maroon-900\/40 {
-  background-color: rgba(245, 237, 226, 0.9) !important;
+/* Star sparkle icon */
+.sparkle-icon {
+  display: inline-block;
+  color: #F43F5E;
+  animation: pulseGlow 2.5s ease-in-out infinite;
 }
 
-html:not(.dark) .bg-maroon-850 {
-  background-color: #EFE3D3 !important;
+/* Card hover transitions */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
 }
 
-html:not(.dark) .text-ivory-100 {
-  color: #2B1019 !important;
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
 }
 
-html:not(.dark) .text-ivory-200 {
-  color: #401421 !important;
-}
-
-html:not(.dark) .text-ivory-300 {
-  color: #641E32 !important;
-}
-
-html:not(.dark) .text-ivory-300\/80,
-html:not(.dark) .text-ivory-300\/75,
-html:not(.dark) .text-ivory-300\/70,
-html:not(.dark) .text-ivory-300\/60 {
-  color: #641E32 !important;
-  opacity: 0.85 !important;
-}
-
-html:not(.dark) .border-gold-500\/15,
-html:not(.dark) .border-gold-500\/20,
-html:not(.dark) .border-gold-500\/25,
-html:not(.dark) .border-gold-500\/30 {
-  border-color: rgba(184, 147, 84, 0.35) !important;
+html.dark .hover-lift:hover {
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.4);
 }
 
 /* Selection highlight */
 ::selection {
-  background-color: #7D293F;
-  color: #F5E8C7;
+  background-color: #FECDD3;
+  color: #9F1239;
 }
 
-/* Custom luxury scrollbar */
+html.dark ::selection {
+  background-color: #9F1239;
+  color: #FECDD3;
+}
+
+/* Custom subtle scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1C1015;
+  background: #F8F5EE;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0F172A;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #401421;
-  border-radius: 4px;
-  border: 1px solid rgba(214, 180, 119, 0.2);
+  background: #E2D9C8;
+  border-radius: 5px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7D293F;
+  background: #D1C5B0;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  ::before,
-  ::after {
+  *, ::before, ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
-

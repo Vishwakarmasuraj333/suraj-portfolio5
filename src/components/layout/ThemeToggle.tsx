@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "./ThemeContext";
 import { Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -11,26 +11,42 @@ interface ThemeToggleProps {
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
   const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className={cn("w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800", className)} />
+    );
+  }
+
+  const isDark = theme === "dark";
 
   return (
     <button
       onClick={toggleTheme}
       type="button"
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} appearance`}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      title={`Switch to ${isDark ? "light" : "dark"} mode`}
       className={cn(
-        "relative p-2.5 rounded-full border border-gold-500/25 bg-maroon-900/60 dark:bg-maroon-900/60 backdrop-blur-md text-gold-400 hover:text-gold-300 hover:border-gold-500/50 hover:bg-maroon-800/80 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 group",
+        "relative p-2 rounded-full border transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 active:scale-90",
+        isDark
+          ? "bg-slate-800 border-slate-700 text-amber-300 hover:bg-slate-700 hover:border-slate-600 shadow-sm"
+          : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 hover:text-rose-500 shadow-sm",
         className
       )}
     >
-      <div className="relative w-4 h-4 flex items-center justify-center">
-        {theme === "dark" ? (
-          <Sun className="w-4 h-4 transition-transform duration-300 rotate-0 hover:rotate-45 text-gold-400" />
+      <div className="relative w-5 h-5 flex items-center justify-center">
+        {isDark ? (
+          <Sun className="w-4 h-4 transition-transform duration-300 rotate-0 hover:rotate-45" />
         ) : (
-          <Moon className="w-4 h-4 transition-transform duration-300 -rotate-12 hover:rotate-0 text-maroon-800" />
+          <Moon className="w-4 h-4 transition-transform duration-300 -rotate-12 hover:rotate-0" />
         )}
       </div>
       <span className="sr-only">Toggle theme</span>
     </button>
   );
 }
-

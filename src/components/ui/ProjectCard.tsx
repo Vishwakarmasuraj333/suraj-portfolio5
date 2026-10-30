@@ -1,278 +1,306 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Project } from "@/types";
-import { Github, ArrowUpRight, ShieldCheck, Share2, Search } from "lucide-react";
+import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import { ProjectModal } from "./ProjectModal";
-import { Button } from "./Button";
 
 interface ProjectCardProps {
   project: Project;
-  index: number;
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
+export function ProjectCard({ project }: ProjectCardProps) {
   const [modalOpen, setModalOpen] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [tiltStyle, setTiltStyle] = useState({});
 
-  // 3D subtle tilt interaction
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-      return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -5;
-    const rotateY = ((x - centerX) / centerX) * 5;
-
-    setTiltStyle({
-      transform: `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`,
-      transition: "transform 0.1s ease-out",
-    });
+  // Pastel header styling based on theme
+  const getThemeConfig = (theme: Project["pastelTheme"]) => {
+    switch (theme) {
+      case "green":
+        return {
+          bg: "bg-[#D1FAE5] dark:bg-emerald-950/40",
+          cardBorder: "hover:border-emerald-300 dark:hover:border-emerald-500",
+          tagColor: "text-emerald-700 dark:text-emerald-400",
+        };
+      case "pink":
+        return {
+          bg: "bg-[#FFE4E6] dark:bg-rose-950/40",
+          cardBorder: "hover:border-rose-300 dark:hover:border-rose-500",
+          tagColor: "text-rose-700 dark:text-rose-400",
+        };
+      case "yellow":
+        return {
+          bg: "bg-[#FEF3C7] dark:bg-amber-950/40",
+          cardBorder: "hover:border-amber-300 dark:hover:border-amber-500",
+          tagColor: "text-amber-700 dark:text-amber-400",
+        };
+      case "purple":
+        return {
+          bg: "bg-[#EDE9FE] dark:bg-purple-950/40",
+          cardBorder: "hover:border-purple-300 dark:hover:border-purple-500",
+          tagColor: "text-purple-700 dark:text-purple-400",
+        };
+      case "blue":
+        return {
+          bg: "bg-[#E0F2FE] dark:bg-sky-950/40",
+          cardBorder: "hover:border-sky-300 dark:hover:border-sky-500",
+          tagColor: "text-sky-700 dark:text-sky-400",
+        };
+    }
   };
 
-  const handleMouseLeave = () => {
-    setTiltStyle({
-      transform: "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)",
-      transition: "transform 0.4s ease-out",
-    });
-  };
+  const themeConfig = getThemeConfig(project.pastelTheme);
 
-  // Bespoke illustrative canvas based on project domain
-  const renderVisualIllustration = () => {
-    if (project.id === "intellitwin-ai") {
-      return (
-        <div className="relative w-full h-52 bg-gradient-to-br from-maroon-950 via-maroon-900 to-maroon-850 p-5 flex flex-col justify-between overflow-hidden border-b border-gold-500/20">
-          {/* Subtle grid pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(214,180,119,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(214,180,119,0.05)_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]" />
+  // Render delightful mini app UI screens inside the mockup
+  const renderAppMockups = () => {
+    switch (project.id) {
+      case "foodly":
+        return (
+          <div className="flex items-center justify-center gap-3 w-full h-full pt-4">
+            {/* Phone 1: Food menu card */}
+            <div className="w-24 sm:w-28 h-36 sm:h-40 bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-200/60 dark:border-slate-800 p-2 flex flex-col justify-between -rotate-3 transition-transform group-hover:-rotate-6">
+              <div>
+                <div className="w-full h-16 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg flex items-center justify-center text-2xl">
+                  🥗
+                </div>
+                <div className="w-16 h-2 bg-slate-800 dark:bg-slate-200 rounded mt-2" />
+                <div className="w-10 h-1.5 bg-slate-300 dark:bg-slate-700 rounded mt-1" />
+              </div>
+              <div className="flex justify-between items-center pt-1 border-t border-slate-100 dark:border-slate-800">
+                <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">₹249</span>
+                <span className="w-4 h-4 rounded-full bg-emerald-500 text-white text-[9px] flex items-center justify-center font-bold">
+                  +
+                </span>
+              </div>
+            </div>
 
-          <div className="relative z-10 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="p-2 rounded-lg bg-gold-500/10 border border-gold-500/30 text-gold-400">
-                <ShieldCheck className="w-5 h-5" />
+            {/* Phone 2: Tracking map card */}
+            <div className="w-24 sm:w-28 h-36 sm:h-40 bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-200/60 dark:border-slate-800 p-2 flex flex-col justify-between rotate-3 transition-transform group-hover:rotate-6">
+              <div>
+                <div className="w-full h-16 bg-slate-100 dark:bg-slate-800 rounded-lg relative overflow-hidden flex items-center justify-center">
+                  <div className="absolute inset-0 bg-emerald-50/70 dark:bg-emerald-950/40" />
+                  <span className="text-xl relative z-10 animate-bounce">🛵</span>
+                </div>
+                <div className="w-14 h-2 bg-slate-800 dark:bg-slate-200 rounded mt-2" />
+                <div className="w-12 h-1.5 bg-emerald-500 rounded mt-1" />
+              </div>
+              <span className="text-[9px] font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-center">
+                18 mins away
               </span>
-              <span className="text-xs font-mono text-gold-400">TELEMETRY_ENGINE // V1</span>
             </div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-maroon-800 border border-gold-500/20 text-ivory-300">
-              XGBoost + SHAP
-            </span>
           </div>
+        );
 
-          {/* Anomaly Detection Wave & Bar Simulation */}
-          <div className="relative z-10 my-auto flex items-end gap-1.5 h-16 pt-2">
-            {[35, 50, 42, 78, 92, 60, 45, 88, 70, 55, 62, 80, 95, 48].map((val, i) => (
-              <div
-                key={i}
-                className="flex-1 rounded-t transition-all duration-500 hover:brightness-125"
-                style={{
-                  height: `${val}%`,
-                  backgroundColor:
-                    val > 80 ? "#D6B477" : val > 65 ? "#7D293F" : "#401421",
-                }}
-              />
-            ))}
+      case "shopio":
+        return (
+          <div className="flex items-center justify-center gap-3 w-full h-full pt-4">
+            {/* Phone 1: Product detail */}
+            <div className="w-24 sm:w-28 h-36 sm:h-40 bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-200/60 dark:border-slate-800 p-2 flex flex-col justify-between -rotate-3 transition-transform group-hover:-rotate-6">
+              <div>
+                <div className="w-full h-16 bg-rose-100 dark:bg-rose-900/40 rounded-lg flex items-center justify-center text-2xl">
+                  👟
+                </div>
+                <div className="w-16 h-2 bg-slate-800 dark:bg-slate-200 rounded mt-2" />
+                <div className="flex gap-1 mt-1">
+                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-slate-800 dark:bg-slate-400" />
+                </div>
+              </div>
+              <div className="w-full py-1 bg-rose-500 text-white rounded text-[8px] font-bold text-center">
+                Add to Cart
+              </div>
+            </div>
+
+            {/* Phone 2: Checkout */}
+            <div className="w-24 sm:w-28 h-36 sm:h-40 bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-200/60 dark:border-slate-800 p-2 flex flex-col justify-between rotate-3 transition-transform group-hover:rotate-6">
+              <div>
+                <div className="w-12 h-2 bg-slate-800 dark:bg-slate-200 rounded mt-1" />
+                <div className="w-full h-7 bg-slate-50 dark:bg-slate-800 rounded mt-2 p-1 flex items-center justify-between">
+                  <span className="w-5 h-5 bg-rose-100 dark:bg-rose-950/60 rounded text-[9px] flex items-center justify-center">🛍️</span>
+                  <div className="w-10 h-1.5 bg-slate-400 dark:bg-slate-500 rounded" />
+                </div>
+                <div className="w-full h-7 bg-slate-50 dark:bg-slate-800 rounded mt-1 p-1 flex items-center justify-between">
+                  <span className="w-5 h-5 bg-rose-100 dark:bg-rose-950/60 rounded text-[9px] flex items-center justify-center">👕</span>
+                  <div className="w-10 h-1.5 bg-slate-400 dark:bg-slate-500 rounded" />
+                </div>
+              </div>
+              <div className="flex justify-between items-center text-[9px] font-bold text-slate-800 dark:text-slate-200 pt-1 border-t border-slate-100 dark:border-slate-800">
+                <span>Total</span>
+                <span>₹1,899</span>
+              </div>
+            </div>
           </div>
+        );
 
-          <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-ivory-300/80">
-            <span>Threat Probability: 0.04%</span>
-            <span className="text-gold-400">STATUS: NOMINAL</span>
-          </div>
-        </div>
-      );
-    }
-
-    if (project.id === "nexora-social") {
-      return (
-        <div className="relative w-full h-52 bg-gradient-to-br from-maroon-950 via-maroon-900 to-maroon-850 p-5 flex flex-col justify-between overflow-hidden border-b border-gold-500/20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(214,180,119,0.08),transparent_50%)]" />
-
-          <div className="relative z-10 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="p-2 rounded-lg bg-gold-500/10 border border-gold-500/30 text-gold-400">
-                <Share2 className="w-5 h-5" />
+      case "walletwise":
+        return (
+          <div className="flex items-center justify-center gap-3 w-full h-full pt-4">
+            {/* Phone 1: Chart */}
+            <div className="w-24 sm:w-28 h-36 sm:h-40 bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-200/60 dark:border-slate-800 p-2 flex flex-col justify-between -rotate-3 transition-transform group-hover:-rotate-6">
+              <div>
+                <span className="text-[8px] text-slate-400 uppercase font-bold">Total Balance</span>
+                <div className="text-xs font-black text-slate-900 dark:text-white">₹84,250</div>
+                {/* Mini Bar Chart */}
+                <div className="flex items-end gap-1 h-14 mt-2 px-1">
+                  <div className="w-2.5 h-6 bg-amber-200 dark:bg-amber-600/50 rounded-t" />
+                  <div className="w-2.5 h-10 bg-amber-400 dark:bg-amber-500 rounded-t" />
+                  <div className="w-2.5 h-7 bg-amber-300 dark:bg-amber-600/70 rounded-t" />
+                  <div className="w-2.5 h-12 bg-amber-500 dark:bg-amber-400 rounded-t" />
+                  <div className="w-2.5 h-8 bg-amber-400 dark:bg-amber-500/80 rounded-t" />
+                </div>
+              </div>
+              <span className="text-[8px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-1 py-0.5 rounded text-center">
+                +14.2% savings
               </span>
-              <span className="text-xs font-mono text-gold-400">NEXORA_HUB // WORKFLOWS</span>
             </div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-maroon-800 border border-gold-500/20 text-ivory-300">
-              Multi-Channel
-            </span>
-          </div>
 
-          {/* Post Pipeline UI Mockup */}
-          <div className="relative z-10 grid grid-cols-3 gap-2 my-auto">
-            <div className="p-2.5 rounded-lg bg-maroon-800/80 border border-gold-500/20 text-center">
-              <span className="text-[10px] uppercase text-ivory-300/70 block">Drafts</span>
-              <span className="font-serif text-lg text-gold-400 font-medium">08</span>
-            </div>
-            <div className="p-2.5 rounded-lg bg-maroon-800/80 border border-gold-500/40 text-center shadow-sm">
-              <span className="text-[10px] uppercase text-gold-400/90 block">Queued</span>
-              <span className="font-serif text-lg text-ivory-100 font-medium">14</span>
-            </div>
-            <div className="p-2.5 rounded-lg bg-maroon-800/80 border border-gold-500/20 text-center">
-              <span className="text-[10px] uppercase text-ivory-300/70 block">Published</span>
-              <span className="font-serif text-lg text-emerald-400 font-medium">126</span>
+            {/* Phone 2: Budget goals */}
+            <div className="w-24 sm:w-28 h-36 sm:h-40 bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-200/60 dark:border-slate-800 p-2 flex flex-col justify-between rotate-3 transition-transform group-hover:rotate-6">
+              <div>
+                <span className="text-[8px] text-slate-500 dark:text-slate-400 font-bold">Monthly Budget</span>
+                <div className="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden mt-1.5">
+                  <div className="bg-amber-500 h-full w-[65%]" />
+                </div>
+                <div className="space-y-1.5 mt-3">
+                  <div className="flex justify-between items-center text-[8px] text-slate-600 dark:text-slate-300">
+                    <span>Rent</span>
+                    <span className="font-bold">60%</span>
+                  </div>
+                  <div className="flex justify-between items-center text-[8px] text-slate-600 dark:text-slate-300">
+                    <span>Food</span>
+                    <span className="font-bold">25%</span>
+                  </div>
+                </div>
+              </div>
+              <div className="text-[9px] font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 rounded py-0.5 text-center">
+                On Track
+              </div>
             </div>
           </div>
+        );
 
-          <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-ivory-300/80">
-            <span>Publishing Queue: Active</span>
-            <span className="text-gold-400">OAuth2 Ready</span>
+      case "fittrack":
+        return (
+          <div className="flex items-center justify-center gap-3 w-full h-full pt-4">
+            {/* Phone 1: Activity Rings */}
+            <div className="w-24 sm:w-28 h-36 sm:h-40 bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-200/60 dark:border-slate-800 p-2 flex flex-col justify-between -rotate-3 transition-transform group-hover:-rotate-6">
+              <div>
+                <span className="text-[8px] font-bold text-slate-400 uppercase">Today&apos;s Burn</span>
+                <div className="text-xs font-black text-slate-900 dark:text-white">620 kcal</div>
+                {/* Visual Ring */}
+                <div className="relative w-12 h-12 mx-auto my-2 rounded-full border-4 border-purple-200 dark:border-purple-900 border-t-purple-600 border-r-purple-500 flex items-center justify-center">
+                  <span className="text-[9px] font-black text-purple-700 dark:text-purple-300">85%</span>
+                </div>
+              </div>
+              <span className="text-[8px] font-bold text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/60 py-0.5 rounded text-center">
+                12k Steps
+              </span>
+            </div>
+
+            {/* Phone 2: Routine split */}
+            <div className="w-24 sm:w-28 h-36 sm:h-40 bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-200/60 dark:border-slate-800 p-2 flex flex-col justify-between rotate-3 transition-transform group-hover:rotate-6">
+              <div>
+                <span className="text-[8px] font-bold text-slate-500 dark:text-slate-400">Day 4: Push Split</span>
+                <div className="mt-1.5 space-y-1">
+                  <div className="w-full bg-purple-50 dark:bg-purple-950/60 p-1 rounded text-[7px] text-purple-900 dark:text-purple-300 flex justify-between">
+                    <span>Bench Press</span>
+                    <span className="font-bold">4 × 10</span>
+                  </div>
+                  <div className="w-full bg-purple-50 dark:bg-purple-950/60 p-1 rounded text-[7px] text-purple-900 dark:text-purple-300 flex justify-between">
+                    <span>Overhead Press</span>
+                    <span className="font-bold">3 × 12</span>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full py-1 bg-purple-600 text-white rounded text-[8px] font-bold text-center">
+                Start Workout
+              </div>
+            </div>
           </div>
-        </div>
-      );
+        );
+
+      default:
+        return (
+          <div className="flex items-center justify-center w-full h-full pt-2">
+            <div className="w-48 h-32 bg-slate-900 rounded-xl shadow-lg border border-sky-400/30 p-3 text-sky-300 font-mono text-[9px] flex flex-col justify-between">
+              <div className="flex justify-between items-center">
+                <span className="flex items-center gap-1 text-emerald-400">● LIVE_FEED</span>
+                <span className="text-slate-400">99.4% ML ACCURACY</span>
+              </div>
+              <div className="space-y-1 text-[8px] text-slate-300">
+                <div>&gt; Telemetry Stream ingested</div>
+                <div>&gt; SHAP value calculation OK</div>
+                <div className="text-sky-400">&gt; Zero anomalies flagged</div>
+              </div>
+              <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div className="bg-sky-400 h-full w-[88%]" />
+              </div>
+            </div>
+          </div>
+        );
     }
-
-    // SE Ranking Research Studio
-    return (
-      <div className="relative w-full h-52 bg-gradient-to-br from-maroon-950 via-maroon-900 to-maroon-850 p-5 flex flex-col justify-between overflow-hidden border-b border-gold-500/20">
-        <div className="relative z-10 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="p-2 rounded-lg bg-gold-500/10 border border-gold-500/30 text-gold-400">
-              <Search className="w-5 h-5" />
-            </span>
-            <span className="text-xs font-mono text-gold-400">SERP_INTELLIGENCE // V2</span>
-          </div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-maroon-800 border border-gold-500/20 text-ivory-300">
-            Analytics
-          </span>
-        </div>
-
-        {/* SERP Rank Table Graphic */}
-        <div className="relative z-10 space-y-1.5 my-auto">
-          <div className="flex items-center justify-between text-[11px] px-2.5 py-1 rounded bg-maroon-800/70 border border-gold-500/15">
-            <span className="text-ivory-200">keyword_research_studio</span>
-            <span className="text-emerald-400 font-mono">#1 Pos (+3)</span>
-          </div>
-          <div className="flex items-center justify-between text-[11px] px-2.5 py-1 rounded bg-maroon-800/50 border border-gold-500/10">
-            <span className="text-ivory-300">fullstack_nextjs_systems</span>
-            <span className="text-gold-400 font-mono">#3 Pos (+1)</span>
-          </div>
-          <div className="flex items-center justify-between text-[11px] px-2.5 py-1 rounded bg-maroon-800/40 border border-gold-500/10">
-            <span className="text-ivory-300/80">explainable_ml_anomaly</span>
-            <span className="text-ivory-200 font-mono">#5 Pos</span>
-          </div>
-        </div>
-
-        <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-ivory-300/80">
-          <span>Search Vol Cached</span>
-          <span className="text-gold-400">SERP Tracked</span>
-        </div>
-      </div>
-    );
-  };
-
-  // Render project visual: Real high-res dashboard screenshot or fallback illustration
-  const renderVisual = () => {
-    if (project.image) {
-      return (
-        <div className="relative w-full h-52 overflow-hidden border-b border-gold-500/20 group-hover:border-gold-500/40 transition-colors bg-maroon-950">
-          <img
-            src={project.image}
-            alt={`${project.title} Interface Preview`}
-            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-          />
-          {/* Subtle luxury vignette & category chip */}
-          <div className="absolute inset-0 bg-gradient-to-t from-maroon-950 via-maroon-950/20 to-black/30 pointer-events-none" />
-          
-          <div className="absolute top-3 left-3 flex items-center gap-2">
-            <span className="text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-full bg-maroon-950/80 border border-gold-500/30 text-gold-400 backdrop-blur-md">
-              {project.category}
-            </span>
-          </div>
-
-          <div className="absolute top-3 right-3">
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-maroon-950/80 border border-gold-500/20 text-ivory-300/80 backdrop-blur-md">
-              0{index + 1}
-            </span>
-          </div>
-        </div>
-      );
-    }
-    return renderVisualIllustration();
   };
 
   return (
     <>
-      <div
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={tiltStyle}
-        className="group relative flex flex-col rounded-2xl bg-gradient-to-b from-maroon-900/90 via-maroon-900/70 to-maroon-950 border border-gold-500/25 hover:border-gold-500/60 overflow-hidden shadow-xl shadow-maroon-950/60 transition-colors duration-300"
-      >
-        {/* Generative Visual or Real Screenshot Header */}
-        {renderVisual()}
+      <div className="group flex flex-col bg-white dark:bg-slate-800/90 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-700/80 shadow-soft hover-lift transition-all duration-300">
+        {/* Pastel Preview Header */}
+        <div
+          className={`relative w-full h-56 sm:h-64 ${themeConfig.bg} overflow-hidden flex items-center justify-center cursor-pointer`}
+          onClick={() => setModalOpen(true)}
+        >
+          {renderAppMockups()}
+        </div>
 
         {/* Card Body */}
-        <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+        <div className="p-6 sm:p-7 flex flex-col justify-between flex-1">
           <div>
-            <div className="flex items-center justify-between gap-2 mb-2">
-              <span className="text-xs uppercase tracking-widest text-gold-400 font-semibold">
-                {project.category}
-              </span>
-              <span className="text-[11px] font-mono text-ivory-300/70">
-                0{index + 1}
-              </span>
-            </div>
+            {/* Category tag */}
+            <span
+              className={`text-xs font-bold uppercase tracking-wider ${themeConfig.tagColor} mb-2 block font-sans`}
+            >
+              {project.category}
+            </span>
 
-            <h3 className="font-serif text-2xl font-normal text-ivory-100 group-hover:text-gold-300 transition-colors mb-2">
+            {/* Title */}
+            <h3 className="text-2xl font-bold text-[#0F172A] dark:text-white tracking-tight mb-2">
               {project.title}
             </h3>
 
-            <p className="text-xs sm:text-sm text-ivory-300/80 line-clamp-3 leading-relaxed mb-6 font-light">
-              {project.description}
+            {/* Tagline / Summary */}
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal mb-5 line-clamp-2">
+              {project.tagline}
             </p>
           </div>
 
-          <div>
-            {/* Tech badges */}
-            <div className="flex flex-wrap gap-1.5 mb-6">
-              {project.technologies.slice(0, 5).map((tech) => (
-                <span
-                  key={tech}
-                  className="text-[11px] px-2.5 py-0.5 rounded-full bg-maroon-950/70 text-ivory-300 border border-gold-500/15"
-                >
-                  {tech}
-                </span>
-              ))}
-              {project.technologies.length > 5 && (
-                <span className="text-[11px] px-2 py-0.5 text-gold-400/80">
-                  +{project.technologies.length - 5}
-                </span>
-              )}
-            </div>
+          {/* Action Link */}
+          <div className="pt-2 border-t border-slate-100 dark:border-slate-700/80 flex items-center justify-between">
+            <button
+              type="button"
+              onClick={() => setModalOpen(true)}
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0F172A] dark:text-slate-200 hover:text-rose-500 dark:hover:text-rose-400 transition-colors group-hover:translate-x-0.5"
+            >
+              <span>View Case Study</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
 
-            {/* Actions */}
-            <div className="flex items-center justify-between pt-4 border-t border-gold-500/15">
-              <button
-                type="button"
-                onClick={() => setModalOpen(true)}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-ivory-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 rounded"
-              >
-                View Architecture
-                <ArrowUpRight className="w-4 h-4" />
-              </button>
-
+            {project.repository && (
               <a
                 href={project.repository}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`View source code for ${project.title} on GitHub`}
-                className="p-2 rounded-full border border-gold-500/25 text-gold-400 hover:text-ivory-100 hover:border-gold-500/60 bg-maroon-850/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500"
+                aria-label={`GitHub repository for ${project.title}`}
+                className="p-1.5 rounded-full text-slate-400 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors"
+                onClick={(e) => e.stopPropagation()}
               >
                 <Github className="w-4 h-4" />
               </a>
-            </div>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Case Study Modal */}
       <ProjectModal
         project={modalOpen ? project : null}
         onClose={() => setModalOpen(false)}
@@ -280,4 +308,3 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     </>
   );
 }
-

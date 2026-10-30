@@ -10,13 +10,13 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: "dark",
+  theme: "light",
   toggleTheme: () => {},
   setTheme: () => {},
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
+  const [theme, setThemeState] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -26,14 +26,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         setThemeState(storedTheme);
         document.documentElement.classList.toggle("dark", storedTheme === "dark");
       } else {
-        // Default to dark burgundy as requested
-        setThemeState("dark");
-        document.documentElement.classList.add("dark");
+        // Default to pastel light theme as requested in reference design
+        setThemeState("light");
+        document.documentElement.classList.remove("dark");
       }
     } catch {
-      // Fallback
-      setThemeState("dark");
-      document.documentElement.classList.add("dark");
+      setThemeState("light");
+      document.documentElement.classList.remove("dark");
     }
     setMounted(true);
   }, []);
@@ -58,8 +57,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
-      {/* Script in layout avoids flash, context manages client state */}
-      <div className={mounted ? "" : "opacity-0 transition-opacity duration-300"}>
+      <div className={mounted ? "" : "opacity-0 transition-opacity duration-200"}>
         {children}
       </div>
     </ThemeContext.Provider>
@@ -69,4 +67,3 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 export function useTheme() {
   return useContext(ThemeContext);
 }
-

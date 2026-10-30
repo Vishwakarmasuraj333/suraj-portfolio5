@@ -3,7 +3,8 @@ export type Theme = "dark" | "light";
 export interface Project {
   id: string;
   title: string;
-  category: "AI & ML" | "Social Media" | "SEO & Web" | "Full Stack";
+  subtitle: string;
+  category: "Food & Delivery" | "E-Commerce" | "Finance" | "Health & Fitness" | "AI & Cloud" | "Developer Tools";
   tagline: string;
   description: string;
   longDescription: string;
@@ -16,17 +17,30 @@ export interface Project {
   liveDemo?: string;
   architectureHighlights: string[];
   role: string;
-  status: "Active" | "Completed" | "In Development";
-  accentColor: string;
-  image?: string;
+  status: "Completed" | "Active" | "In Development";
+  pastelTheme: "green" | "pink" | "yellow" | "purple" | "blue";
+  stats?: {
+    metric: string;
+    label: string;
+  };
+}
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  description: string;
+  iconType: "mobile" | "uiux" | "backend" | "testing";
+  pastelColor: "purple" | "pink" | "yellow" | "green";
+  skills: string[];
+  deliverables: string[];
 }
 
 export interface SkillItem {
   name: string;
-  category: "Frontend" | "Backend" | "Databases" | "Tools" | "Additional";
+  category: "Frontend" | "Backend" | "Databases" | "Tools";
   description: string;
   iconName: string;
-  featured?: boolean;
+  level: string;
 }
 
 export interface EducationItem {
@@ -35,14 +49,25 @@ export interface EducationItem {
   location: string;
   period: string;
   status: "Completed" | "Pursuing";
+  cgpa?: string;
   description: string;
   highlights: string[];
+}
+
+export interface CertificateItem {
+  title: string;
+  issuer: string;
+  issueDate: string;
+  credentialId: string;
+  verificationUrl: string;
+  skills: string[];
+  description: string;
 }
 
 export interface JourneyMilestone {
   year: string;
   title: string;
-  category: "Architecture" | "Full Stack Milestone" | "AI & Cloud" | "Foundations";
+  category: "Full Stack Milestone" | "Foundations" | "Architecture";
   description: string;
   keyLearnings: string[];
   technologies: string[];
@@ -74,4 +99,3 @@ export interface ContactFormData {
   subject: string;
   message: string;
 }
-

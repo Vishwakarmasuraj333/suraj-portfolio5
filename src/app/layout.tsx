@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Manrope } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import { ThemeProvider } from "@/components/layout/ThemeContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { AtmosphereBackground } from "@/components/ui/AtmosphereBackground";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 
-const playfair = Playfair_Display({
+const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-sans",
   display: "swap",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -27,18 +21,17 @@ export const metadata: Metadata = {
     template: "%s | Suraj Vishwakarma",
   },
   description:
-    "Full Stack Developer and M.Sc. IT student crafting responsive web applications, intuitive interfaces, and dependable backend microservices with Next.js, React, Node.js, and Python.",
+    "Full Stack Developer specializing in fast, scalable, and beautiful web & mobile applications. B.Sc. IT (9.0 CGPA) | Abhinav College | M.Sc. IT Pursuing | Simplilearn Certified.",
   keywords: [
     "Suraj Vishwakarma",
     "Full Stack Developer",
     "Next.js Developer",
     "React Developer",
-    "Python FastAPI",
-    "Machine Learning Integration",
-    "Cybersecurity Anomaly Detection",
-    "IntelliTwin AI",
-    "Web Development Mumbai",
+    "Node.js Developer",
+    "MERN Stack Developer",
     "TypeScript",
+    "Mumbai Developer",
+    "Abhinav College",
   ],
   authors: [{ name: "Suraj Vishwakarma", url: siteConfig.links.github }],
   creator: "Suraj Vishwakarma",
@@ -52,8 +45,8 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     title: "Suraj Vishwakarma | Full Stack Developer",
     description:
-      "Full Stack Developer crafting responsive interfaces, reliable backends, and thoughtful digital products.",
-    siteName: siteConfig.brand,
+      "I build digital products that people love. Full Stack Developer crafting fast, scalable & beautiful web & mobile apps.",
+    siteName: siteConfig.name,
     images: [
       {
         url: siteConfig.ogImage,
@@ -67,24 +60,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Suraj Vishwakarma | Full Stack Developer",
     description:
-      "Full Stack Developer crafting responsive interfaces, reliable backends, and thoughtful digital products.",
+      "I build digital products that people love. Full Stack Developer crafting fast, scalable & beautiful web & mobile apps.",
     images: [siteConfig.ogImage],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/logo.svg",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
@@ -110,40 +92,41 @@ export default function RootLayout({
       "Next.js",
       "React",
       "Node.js",
-      "Python",
-      "FastAPI",
-      "PostgreSQL",
-      "Machine Learning Explainability",
+      "TypeScript",
+      "Express.js",
+      "MongoDB",
+      "RESTful APIs",
     ],
   };
 
-  const jsonLdWebSite = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: siteConfig.brand,
-    url: siteConfig.url,
-    author: {
-      "@type": "Person",
-      name: "Suraj Vishwakarma",
-    },
-  };
-
   return (
-    <html lang="en" className={`dark ${playfair.variable} ${manrope.variable}`}>
+    <html lang="en" className={fontSans.variable}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPerson) }}
         />
+        {/* Anti-flash inline script to instantly apply stored theme before paint */}
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('sv_theme');
+                  if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
         />
       </head>
-      <body className="font-sans bg-maroon-950 text-ivory-200 antialiased selection:bg-maroon-600 selection:text-gold-300 min-h-screen flex flex-col relative overflow-x-hidden">
+      <body className="font-sans bg-[#FCFAF8] dark:bg-[#0B1120] text-[#111827] dark:text-[#F8FAFC] antialiased selection:bg-rose-200 selection:text-rose-900 min-h-screen flex flex-col relative overflow-x-hidden transition-colors duration-200">
         <ThemeProvider>
           <ScrollProgress />
-          <AtmosphereBackground />
           <Navbar />
           <main className="flex-1 w-full">{children}</main>
           <Footer />
@@ -152,4 +135,3 @@ export default function RootLayout({
     </html>
   );
 }
-

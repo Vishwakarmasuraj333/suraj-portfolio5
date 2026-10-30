@@ -1,195 +1,121 @@
+"use client";
+
 import React from "react";
-import { SectionHeading } from "../ui/SectionHeading";
-import {
-  Layout,
-  Server,
-  Database,
-  Network,
-  Smartphone,
-  Lightbulb,
-  CheckCircle,
-  GraduationCap,
-  MapPin,
-  Sparkles,
-} from "lucide-react";
+import { DeveloperCodingIllustration } from "../illustrations/DeveloperCodingIllustration";
 import { siteConfig } from "@/lib/site-config";
+import {
+  Award,
+  GraduationCap,
+  Sparkles,
+  Coffee,
+} from "lucide-react";
 
 export function AboutSection() {
-  const coreCompetencies = [
+  const stats = [
     {
-      title: "Frontend Engineering",
-      icon: Layout,
-      desc: "Architecting modular, type-safe Next.js and React components with fluid typography and micro-interactions.",
+      value: "9.0",
+      label: "CGPA (Excellence)",
+      sub: "B.Sc. IT Topper",
+      icon: Award,
+      bg: "bg-rose-100 dark:bg-rose-950/60",
+      border: "border-rose-200 dark:border-rose-900/40",
+      text: "text-rose-600 dark:text-rose-400",
     },
     {
-      title: "Backend Development",
-      icon: Server,
-      desc: "Crafting resilient REST APIs, asynchronous handlers in Python and Node.js, and secure session management.",
+      value: "2025",
+      label: "Grad Year",
+      sub: "Abhinav College",
+      icon: GraduationCap,
+      bg: "bg-emerald-100 dark:bg-emerald-950/60",
+      border: "border-emerald-200 dark:border-emerald-900/40",
+      text: "text-emerald-600 dark:text-emerald-400",
     },
     {
-      title: "Database Design",
-      icon: Database,
-      desc: "Engineering structured relational schemas in PostgreSQL/MySQL and flexible document models in MongoDB.",
+      value: "M.Sc.",
+      label: "Information Tech",
+      sub: "Currently Pursuing",
+      icon: Sparkles,
+      bg: "bg-purple-100 dark:bg-purple-950/60",
+      border: "border-purple-200 dark:border-purple-900/40",
+      text: "text-purple-600 dark:text-purple-400",
     },
     {
-      title: "API Integration",
-      icon: Network,
-      desc: "Connecting machine learning models (XGBoost/SHAP) and external microservices with deterministic error boundaries.",
-    },
-    {
-      title: "Responsive UI Architecture",
-      icon: Smartphone,
-      desc: "Delivering accessible, cross-browser interfaces designed mobile-first without unexpected viewport overflow.",
-    },
-    {
-      title: "Problem Solving & Learning",
-      icon: Lightbulb,
-      desc: "Relentless curiosity in postgraduate research, code reviews, algorithmic optimization, and system refactoring.",
+      value: "15+",
+      label: "Projects Built",
+      sub: "∞ Cups of Coffee",
+      icon: Coffee,
+      bg: "bg-amber-100 dark:bg-amber-950/60",
+      border: "border-amber-200 dark:border-amber-900/40",
+      text: "text-amber-600 dark:text-amber-400",
     },
   ];
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-12 sm:py-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          badge="Profile"
-          title="Engineered with Precision & Purpose"
-          subtitle="A disciplined approach to crafting scalable full-stack applications and intuitive interfaces."
-        />
+        {/* Soft Pink Wavy Container matching reference */}
+        <div className="relative rounded-[2.5rem] sm:rounded-[3.5rem] bg-[#FFF0F4] dark:bg-[#131D33] border border-rose-100 dark:border-slate-800 p-6 sm:p-10 lg:p-16 overflow-hidden shadow-soft transition-colors duration-200">
+          {/* Subtle decorative background wave blur */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-rose-200/40 dark:bg-rose-500/10 rounded-full blur-3xl pointer-events-none -z-0" />
 
-        {/* Top Grid: Portrait + Narrative */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
-          {/* Left Column: Editorial Portrait Showcase */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-[380px] sm:max-w-[420px] group">
-              {/* Luxury Accent Backing Ring */}
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-gold-500/25 via-maroon-700/40 to-gold-400/20 blur-lg opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Main Portrait Frame */}
-              <div className="relative rounded-3xl overflow-hidden border-2 border-gold-500/40 bg-maroon-950 shadow-2xl shadow-maroon-950">
-                <img
-                  src="/images/suraj-portrait.jpg"
-                  alt="Suraj Vishwakarma - Software Developer"
-                  className="w-full h-[460px] object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                />
-
-                {/* Atmospheric Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-maroon-950 via-maroon-950/25 to-transparent pointer-events-none" />
-
-                {/* Floating Bottom Credentials Badge */}
-                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-maroon-950/85 border border-gold-500/30 backdrop-blur-md">
-                  <div className="flex items-center justify-between mb-1">
-                    <h3 className="font-serif text-lg text-ivory-100 font-medium">
-                      Suraj Vishwakarma
-                    </h3>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                      Active
-                    </span>
-                  </div>
-
-                  <div className="space-y-1 text-xs text-ivory-300/80 font-light">
-                    <p className="flex items-center gap-1.5 text-gold-400">
-                      <GraduationCap className="w-3.5 h-3.5 text-gold-400" />
-                      <span>M.Sc. IT Scholar • Abhinav College</span>
-                    </p>
-                    <p className="flex items-center gap-1.5 text-ivory-300/70">
-                      <MapPin className="w-3.5 h-3.5 text-gold-400" />
-                      <span>{siteConfig.location}</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-center relative z-10">
+            {/* Left Column: Developer Illustration */}
+            <div className="lg:col-span-5 flex justify-center items-center">
+              <DeveloperCodingIllustration className="w-full max-w-sm sm:max-w-md lg:max-w-none" />
             </div>
-          </div>
 
-          {/* Right Column: Editorial Bio Narrative */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="p-8 sm:p-9 rounded-2xl bg-gradient-to-b from-maroon-900/80 via-maroon-900/60 to-maroon-950 border border-gold-500/25 shadow-xl shadow-maroon-950/50 relative">
-              <span className="font-serif text-6xl text-gold-500/15 absolute top-4 right-6 pointer-events-none select-none">
-                “
+            {/* Right Column: Narrative, Education details & Stat Cards */}
+            <div className="lg:col-span-7 flex flex-col items-start text-left">
+              {/* Tag */}
+              <span className="text-xs sm:text-sm font-bold text-rose-500 uppercase tracking-widest mb-2 font-sans">
+                About me
               </span>
 
-              <h3 className="font-serif text-2xl sm:text-3xl text-ivory-100 font-normal mb-4">
-                Full Stack Developer & Technical Craftsman
-              </h3>
+              {/* Headline */}
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F172A] dark:text-white tracking-tight leading-[1.2] mb-5">
+                Building apps <br />
+                <span className="text-[#0F172A] dark:text-white">with purpose</span>
+              </h2>
 
-              {/* Exact user-provided copy */}
-              <p className="text-ivory-200 text-base leading-relaxed font-light mb-4">
-                I’m Suraj Vishwakarma, a Full Stack Developer and M.Sc. IT student passionate about building responsive web applications, intuitive user interfaces, and dependable backend systems. I enjoy turning ideas into practical digital products using modern JavaScript technologies, clean architecture, and thoughtful design.
-              </p>
-
-              <p className="text-ivory-300/85 text-sm leading-relaxed font-light mb-6">
-                Whether deploying machine learning inference pipelines with FastAPI and Next.js, or structuring centralized social management workflows, I focus on clean code, testability, and human-centric developer ergonomics.
-              </p>
-
-              <div className="pt-6 border-t border-gold-500/20 flex flex-wrap gap-4 text-xs font-mono text-gold-400">
-                <span className="flex items-center gap-1.5">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-400" /> Real Project Implementations
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-400" /> Academic Rigor
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-400" /> Zero Pretension
-                </span>
-              </div>
-            </div>
-
-            {/* Architectural Philosophy Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-5 rounded-xl bg-maroon-900/40 border border-gold-500/15">
-                <span className="text-xs uppercase tracking-wider text-gold-400 font-semibold block mb-1">
-                  Philosophy
-                </span>
-                <p className="text-xs text-ivory-300 leading-relaxed">
-                  Functionality first. Every aesthetic decision supports readability, performance, and accessibility.
+              {/* Bio Description with Real Details */}
+              <div className="space-y-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal mb-8">
+                <p>
+                  I&apos;m Suraj, a Full Stack Developer with a strong academic foundation and hands-on experience building modern, responsive, and scalable web applications. I love turning ambitious ideas into high-quality software with clean code, intuitive user experience, and modern technology stacks.
+                </p>
+                <p>
+                  Graduated with a <strong>B.Sc. in Information Technology (2025)</strong> from <strong>Abhinav College, Bhayandar</strong> with an outstanding <strong>9.0 CGPA</strong>, and currently expanding my technical mastery through <strong>M.Sc. Information Technology</strong>.
+                </p>
+                <p>
+                  Certified in <strong>JavaScript and Web Development by Simplilearn</strong>, I combine frontend finesse with robust backend microservices, RESTful APIs, and database engineering.
                 </p>
               </div>
 
-              <div className="p-5 rounded-xl bg-maroon-900/40 border border-gold-500/15">
-                <span className="text-xs uppercase tracking-wider text-gold-400 font-semibold block mb-1">
-                  Research
-                </span>
-                <p className="text-xs text-ivory-300 leading-relaxed">
-                  Investigating AI explainability and real-time telemetry anomaly classification.
-                </p>
+              {/* 4 Stat Badges matching the screenshot */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full">
+                {stats.map((stat, idx) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-rose-100 dark:border-slate-700 rounded-2xl p-3.5 sm:p-4 flex flex-col items-start shadow-xs hover-lift transition-colors"
+                    >
+                      <div className={`p-2 rounded-xl ${stat.bg} ${stat.text} mb-3`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span className="text-xl sm:text-2xl font-black text-[#0F172A] dark:text-white tracking-tight">
+                        {stat.value}
+                      </span>
+                      <span className="text-xs font-bold text-slate-700 dark:text-slate-200 mt-0.5">
+                        {stat.label}
+                      </span>
+                      <span className="text-[10px] text-slate-400 dark:text-slate-400 font-medium">
+                        {stat.sub}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Core Competencies Matrix */}
-        <div>
-          <div className="mb-6 flex items-center justify-between">
-            <h4 className="font-serif text-xl text-ivory-100 font-medium">
-              Core Technical Competencies
-            </h4>
-            <span className="text-xs font-mono text-gold-400/80">
-              6 Disciplines
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {coreCompetencies.map((comp) => {
-              const Icon = comp.icon;
-              return (
-                <div
-                  key={comp.title}
-                  className="group p-5 rounded-xl bg-maroon-900/50 hover:bg-maroon-900/80 border border-gold-500/15 hover:border-gold-500/40 transition-all duration-300"
-                >
-                  <div className="p-2.5 w-fit rounded-lg bg-gold-500/10 text-gold-400 group-hover:scale-110 transition-transform mb-3 border border-gold-500/20">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h4 className="font-serif text-base text-ivory-100 font-medium mb-1.5">
-                    {comp.title}
-                  </h4>
-                  <p className="text-xs text-ivory-300/75 leading-relaxed font-light">
-                    {comp.desc}
-                  </p>
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>

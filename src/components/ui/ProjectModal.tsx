@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { Project } from "@/types";
-import { X, ExternalLink, Github, CheckCircle2, Clock, Cpu } from "lucide-react";
+import { X, ExternalLink, Github, CheckCircle2, Layers, Cpu } from "lucide-react";
 import { Button } from "./Button";
 
 interface ProjectModalProps {
@@ -29,126 +29,92 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-maroon-950/80 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-slate-900/60 dark:bg-black/75 backdrop-blur-sm animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-project-title"
     >
       <div
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-gradient-to-b from-maroon-900 to-maroon-950 border border-gold-500/30 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-maroon-950 text-ivory-200 focus:outline-none"
+        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl text-slate-800 dark:text-slate-200 focus:outline-none"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
           onClick={onClose}
           type="button"
-          aria-label="Close project details"
-          className="absolute top-5 right-5 p-2 rounded-full border border-gold-500/20 text-gold-400 hover:text-ivory-100 hover:border-gold-500/50 bg-maroon-850/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500"
+          aria-label="Close project modal"
+          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Category & Status */}
         <div className="flex items-center gap-3 mb-2">
-          <span className="text-xs uppercase tracking-widest text-gold-400 font-semibold px-2.5 py-0.5 rounded-full bg-gold-500/10 border border-gold-500/20">
+          <span className="text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400 px-3 py-1 rounded-full bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-900/50">
             {project.category}
           </span>
-          <span className="text-xs text-ivory-300/70 flex items-center gap-1.5">
+          <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 font-medium">
             <span className="w-2 h-2 rounded-full bg-emerald-500" />
             {project.status}
           </span>
         </div>
 
         {/* Title */}
-        <h3
-          id="modal-project-title"
-          className="font-serif text-2xl sm:text-3xl font-normal text-ivory-100 mb-2"
-        >
+        <h2 id="modal-project-title" className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] dark:text-white mb-1">
           {project.title}
-        </h3>
-        <p className="text-gold-400 text-sm font-medium mb-6">
-          {project.tagline}
+        </h2>
+        <p className="text-sm font-semibold text-rose-500 mb-6">
+          {project.subtitle}
         </p>
 
-        {/* High-res project dashboard preview image */}
-        {project.image && (
-          <div className="mb-6 rounded-xl overflow-hidden border border-gold-500/25 max-h-72 bg-maroon-950">
-            <img
-              src={project.image}
-              alt={`${project.title} High Resolution Interface`}
-              className="w-full h-full object-cover object-top"
-            />
-          </div>
-        )}
-
-        {/* Detailed Description */}
-        <div className="space-y-4 mb-6 text-sm text-ivory-300 leading-relaxed border-t border-b border-gold-500/15 py-4">
+        {/* Long Description */}
+        <div className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal mb-6">
           <p>{project.longDescription}</p>
-          <div className="flex items-center gap-2 text-xs text-ivory-300/80 pt-1">
-            <span className="text-gold-400 font-medium">Role:</span> {project.role}
-          </div>
         </div>
 
-        {/* Implemented vs Planned Features */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <h4 className="flex items-center gap-2 text-xs uppercase tracking-wider text-emerald-400 font-semibold mb-3">
-              <CheckCircle2 className="w-4 h-4" /> Implemented Capabilities
-            </h4>
-            <ul className="space-y-2">
-              {project.features.implemented.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-xs text-ivory-200">
-                  <span className="text-emerald-400 mt-0.5">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {project.features.planned && project.features.planned.length > 0 && (
-            <div>
-              <h4 className="flex items-center gap-2 text-xs uppercase tracking-wider text-gold-400/80 font-semibold mb-3">
-                <Clock className="w-4 h-4" /> Planned Enhancements
-              </h4>
-              <ul className="space-y-2">
-                {project.features.planned.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-xs text-ivory-300/80">
-                    <span className="text-gold-400/80 mt-0.5">•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+        {/* Implemented Features */}
+        <div className="mb-6 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-750">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#0F172A] dark:text-white mb-3 flex items-center gap-1.5">
+            <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Key Features & Capabilities
+          </h3>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            {project.features.implemented.map((feature, idx) => (
+              <li key={idx} className="flex items-start gap-2">
+                <span className="text-emerald-500 font-bold">✓</span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Architecture Highlights */}
-        {project.architectureHighlights.length > 0 && (
-          <div className="mb-6 p-4 rounded-xl bg-maroon-950/70 border border-gold-500/20">
-            <h4 className="flex items-center gap-2 text-xs uppercase tracking-wider text-gold-400 font-semibold mb-2">
-              <Cpu className="w-4 h-4" /> Architectural Highlights
-            </h4>
-            <ul className="space-y-1.5">
-              {project.architectureHighlights.map((arch, idx) => (
-                <li key={idx} className="text-xs text-ivory-300 flex items-start gap-2">
-                  <span className="text-gold-500">→</span>
-                  <span>{arch}</span>
-                </li>
-              ))}
-            </ul>
+        <div className="mb-6">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-400 mb-3 flex items-center gap-1.5">
+            <Cpu className="w-4 h-4 text-rose-500" /> Architectural Highlights
+          </h3>
+          <div className="space-y-2">
+            {project.architectureHighlights.map((arch, idx) => (
+              <div
+                key={idx}
+                className="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-700 dark:text-slate-300 flex items-center gap-2.5"
+              >
+                <Layers className="w-4 h-4 text-rose-500 shrink-0" />
+                <span>{arch}</span>
+              </div>
+            ))}
           </div>
-        )}
+        </div>
 
-        {/* Technologies */}
+        {/* Tech Badges */}
         <div className="mb-8">
-          <h4 className="text-xs uppercase tracking-wider text-gold-400/90 font-medium mb-3">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-400 mb-3">
             Technology Stack
-          </h4>
+          </h3>
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="text-xs px-3 py-1 rounded-md bg-maroon-800/80 text-ivory-200 border border-gold-500/20"
+                className="text-xs font-semibold px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
               >
                 {tech}
               </span>
@@ -156,34 +122,39 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
         </div>
 
-        {/* Action CTAs */}
-        <div className="flex flex-wrap items-center gap-3 pt-2">
-          <Button
-            variant="primary"
-            href={project.repository}
-            isExternal
-            className="flex items-center gap-2"
-          >
-            <Github className="w-4 h-4" /> View Source on GitHub
-          </Button>
+        {/* Modal Actions */}
+        <div className="pt-5 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            {project.liveDemo && (
+              <Button
+                variant="primary"
+                size="sm"
+                href={project.liveDemo}
+                isExternal
+                className="gap-1.5"
+              >
+                <ExternalLink className="w-4 h-4" /> Live Demo
+              </Button>
+            )}
 
-          {project.liveDemo ? (
-            <Button
-              variant="secondary"
-              href={project.liveDemo}
-              isExternal
-              className="flex items-center gap-2"
-            >
-              <ExternalLink className="w-4 h-4" /> Live Demo
-            </Button>
-          ) : (
-            <span className="text-xs text-ivory-300/60 italic px-2">
-              Live deployment configured upon enterprise staging
-            </span>
-          )}
+            {project.repository && (
+              <Button
+                variant="secondary"
+                size="sm"
+                href={project.repository}
+                isExternal
+                className="gap-1.5"
+              >
+                <Github className="w-4 h-4" /> Source Code
+              </Button>
+            )}
+          </div>
+
+          <Button variant="ghost" size="sm" onClick={onClose}>
+            Close
+          </Button>
         </div>
       </div>
     </div>
   );
 }
-

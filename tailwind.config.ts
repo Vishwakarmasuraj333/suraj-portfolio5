@@ -10,47 +10,98 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        maroon: {
-          950: "#1C1015", // Dark Surface
-          900: "#2B1019", // Deep Burgundy
-          850: "#35121D",
-          800: "#401421", // Dark Maroon
-          700: "#641E32", // Wine Red
-          600: "#7D293F", // Rich Burgundy Accent
-          500: "#9C3953",
-          400: "#BCA3A8", // Muted Rose
-          200: "#E5D5D8",
-          100: "#F2EAEB",
-          50: "#FAF6F7",
-        },
-        gold: {
-          300: "#F5E8C7",
-          400: "#E8D2A1", // Soft Gold
-          500: "#D6B477", // Champagne Gold
-          600: "#B89354",
-          700: "#8C6C35",
-        },
-        ivory: {
+        cream: {
           50: "#FFFFFF",
-          100: "#FCFAF6",
-          200: "#F7F1E8", // Warm Ivory
-          300: "#EFE4D4",
-          400: "#DFCEB7",
-          500: "#BAA588",
+          100: "#FCFAF8", // Main warm page background
+          200: "#FAF6F0",
+          300: "#F5EFE6",
+          400: "#EFE6D8",
+          500: "#DFD2BE",
+        },
+        rose: {
+          50: "#FFF1F4", // Soft pastel pink section wave
+          100: "#FFE4EB",
+          200: "#FECDD9",
+          500: "#F43F5E", // Primary vibrant pink accent
+          600: "#E11D48",
+          700: "#BE123C",
+        },
+        navy: {
+          950: "#070B16",
+          900: "#0C162C", // Midnight navy footer
+          850: "#101C38",
+          800: "#16254A",
+          700: "#1E3364",
+          600: "#2B478B",
+        },
+        heading: "#111827",
+        body: "#4B5563",
+        // Pastel accent boxes matching reference
+        pastel: {
+          purple: {
+            bg: "#F5F3FF",
+            border: "#E9D5FF",
+            icon: "#8B5CF6",
+            text: "#6D28D9",
+          },
+          pink: {
+            bg: "#FFF1F2",
+            border: "#FECDD3",
+            icon: "#F43F5E",
+            text: "#BE123C",
+          },
+          amber: {
+            bg: "#FFFBEB",
+            border: "#FDE68A",
+            icon: "#F59E0B",
+            text: "#B45309",
+          },
+          green: {
+            bg: "#F0FDF4",
+            border: "#BBF7D0",
+            icon: "#10B981",
+            text: "#047857",
+          },
+          blue: {
+            bg: "#F0F9FF",
+            border: "#BAE6FD",
+            icon: "#0EA5E9",
+            text: "#0369A1",
+          },
         },
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "Georgia", "serif"],
-        sans: ["var(--font-manrope)", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
+        display: ["var(--font-sans)", "Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        "gold-glow": "0 0 25px -5px rgba(214, 180, 119, 0.25)",
-        "maroon-glow": "0 0 35px -5px rgba(100, 30, 50, 0.4)",
-        "luxury": "0 20px 40px -15px rgba(28, 16, 21, 0.6)",
+        soft: "0 10px 30px -10px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03)",
+        card: "0 20px 40px -15px rgba(244, 63, 94, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03)",
+        button: "0 10px 25px -5px rgba(244, 63, 94, 0.4)",
+        float: "0 25px 50px -12px rgba(0, 0, 0, 0.12)",
       },
-      backgroundImage: {
-        "gold-gradient": "linear-gradient(135deg, #D6B477 0%, #E8D2A1 50%, #B89354 100%)",
-        "maroon-radial": "radial-gradient(circle at center, #401421 0%, #2B1019 60%, #1C1015 100%)",
+      borderRadius: {
+        "4xl": "2rem",
+        "5xl": "2.5rem",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+        floatSlow: {
+          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+          "50%": { transform: "translateY(-12px) rotate(1.5deg)" },
+        },
+        pulseGlow: {
+          "0%, 100%": { opacity: "0.6", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.05)" },
+        },
+      },
+      animation: {
+        float: "float 4s ease-in-out infinite",
+        floatSlow: "floatSlow 6s ease-in-out infinite",
+        pulseGlow: "pulseGlow 3s ease-in-out infinite",
       },
     },
   },
@@ -58,4 +109,3 @@ const config: Config = {
 };
 
 export default config;
-

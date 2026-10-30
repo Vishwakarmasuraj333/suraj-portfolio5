@@ -23,14 +23,13 @@ export function ScrollProgress() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 h-[2.5px] z-50 pointer-events-none bg-transparent"
+      className="fixed top-0 left-0 right-0 h-[3px] z-50 pointer-events-none bg-transparent"
       aria-hidden="true"
     >
       <div
-        className="h-full bg-gradient-to-r from-gold-600 via-gold-400 to-ivory-200 shadow-[0_0_8px_rgba(214,180,119,0.7)] transition-all duration-100 ease-out"
+        className="h-full bg-gradient-to-r from-rose-500 via-rose-400 to-amber-300 shadow-[0_0_8px_rgba(244,63,94,0.5)] transition-all duration-100 ease-out"
         style={{ width: `${progress}%` }}
       />
     </div>
   );
 }
-
