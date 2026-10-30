@@ -76,7 +76,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               Suraj Vishwakarma
             </h2>
             <p className="text-sm font-semibold text-rose-500 mt-0.5">
-              Frontend Developer • B.Sc. IT (9.04 CGPA - A Grade)
+              Full Stack Developer • B.Sc. IT (9.04 CGPA - A Grade)
             </p>
           </div>
 

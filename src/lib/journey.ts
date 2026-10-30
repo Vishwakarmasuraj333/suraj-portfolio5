@@ -27,7 +27,7 @@ export const educationList: EducationItem[] = [
       "Comprehensive undergraduate degree covering software engineering, frontend web technologies, core algorithms, data structures, and database systems. Graduated with top academic honors.",
     highlights: [
       "Graduated with top academic distinction scoring an impressive 9.04 CGPA (A Grade)",
-      "Specialized in modern frontend web technologies, JavaScript (ES6+), and ReactJS",
+      "Specialized in modern full-stack web technologies, ReactJS, and scalable applications",
       "Built real-world deployed web applications with Git/GitHub version control",
       "Studied at Abhinav College, Bhayandar (affiliated with University of Mumbai)",
     ],

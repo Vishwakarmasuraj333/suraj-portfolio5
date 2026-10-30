@@ -1,15 +1,15 @@
 export const siteConfig = {
   name: "Suraj Vishwakarma",
   shortName: "Suraj",
-  title: "Frontend Developer",
-  brand: "Suraj Vishwakarma — Frontend Developer",
+  title: "Full Stack Developer",
+  brand: "Suraj Vishwakarma — Full Stack Developer",
   tagline: "I build digital products that people love",
   description:
-    "Motivated Frontend Developer skilled in HTML, CSS, JavaScript (ES6+), React, and Tailwind, focused on building clean, responsive, and user-friendly interfaces. Passionate about performance optimization, clean code, and transforming UI/UX ideas into fast, accessible web experiences.",
+    "Motivated Full Stack Developer skilled in React, Next.js, Node.js, JavaScript (ES6+), HTML, CSS, and Tailwind, focused on building clean, scalable, and user-friendly web applications that solve real-world problems.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://surajvishwakarma.dev",
   ogImage: "/og-image.png",
   avatarImage: "/images/suraj.jpg",
-  availability: "Available for Frontend Roles & Projects",
+  availability: "Available for Full-time Roles & Projects",
   location: "Mumbai, Maharashtra, India",
   stats: {
     cgpa: "9.04",

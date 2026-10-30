@@ -29,7 +29,7 @@ export function EducationSection() {
         "Comprehensive undergraduate degree covering software engineering, data structures, algorithms, frontend frameworks, and database architecture. Completed with outstanding academic honors.",
       highlights: [
         "CGPA: 9.04 (A Grade Distinction)",
-        "Specialized in Frontend Development & ReactJS",
+        "Specialized in Full Stack Web Development & ReactJS",
         "Built production web applications with Git/GitHub",
       ],
       featured: true,

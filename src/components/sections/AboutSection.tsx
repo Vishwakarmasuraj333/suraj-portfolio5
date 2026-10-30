@@ -81,10 +81,10 @@ export function AboutSection() {
               {/* Bio Description with Real Details */}
               <div className="space-y-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal mb-8">
                 <p>
-                  I&apos;m <strong>Suraj Vishwakarma</strong>, a motivated Frontend Developer skilled in <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript (ES6+)</strong>, <strong>ReactJS</strong>, and <strong>Tailwind CSS</strong>. I focus on building clean, responsive, and user-friendly interfaces.
+                  I&apos;m <strong>Suraj Vishwakarma</strong>, a motivated Full Stack Developer skilled in <strong>React</strong>, <strong>Next.js</strong>, <strong>Node.js</strong>, <strong>JavaScript (ES6+)</strong>, <strong>HTML</strong>, <strong>CSS</strong>, and <strong>Tailwind CSS</strong>. I focus on building clean, responsive, and scalable digital products that solve real-world problems.
                 </p>
                 <p>
-                  Passionate about performance optimization, clean code, and transforming UI/UX concepts into fast, accessible web experiences. I have built and deployed multiple real-world web projects utilizing modern version control with Git/GitHub and leveraging AI tools for debugging and workflow optimization.
+                  Passionate about performance optimization, clean code, and transforming ambitious product ideas into fast, accessible web experiences. I have built and deployed multiple real-world web projects utilizing modern version control with Git/GitHub and leveraging modern development tools for workflow optimization.
                 </p>
                 <p>
                   Graduated with a <strong>B.Sc. in Information Technology (2022 – 2025)</strong> from the <strong>University of Mumbai</strong> with an outstanding <strong>9.04 CGPA (A Grade)</strong>, backed by verified credentials from <strong>FreeCodeCamp</strong> and <strong>Simplilearn</strong>.

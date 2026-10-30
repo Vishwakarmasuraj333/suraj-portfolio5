@@ -132,7 +132,7 @@ export function SkillsSection() {
           </div>
 
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-md font-normal leading-relaxed">
-            Frontend specialized skills: HTML, CSS, JavaScript (ES6+), ReactJS, Bootstrap, and Tailwind CSS.
+            Full Stack skills: React, Next.js, Node.js, JavaScript (ES6+), TypeScript, HTML, CSS, and Tailwind CSS.
           </p>
         </div>
 

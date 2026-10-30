@@ -33,7 +33,7 @@ export function Logo({ className, size = "md", withText = true }: LogoProps) {
             Suraj Vishwakarma
           </span>
           <span className="text-[10px] sm:text-[11px] text-rose-500 dark:text-rose-400 font-semibold tracking-wide transition-colors">
-            Frontend Developer
+            Full Stack Developer
           </span>
         </div>
       )}

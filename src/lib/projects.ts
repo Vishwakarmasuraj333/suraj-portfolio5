@@ -32,7 +32,7 @@ export const projects: Project[] = [
       "Tailwind CSS utility styling with accessible color contrast ratios",
       "Git/GitHub version control with atomic commits",
     ],
-    role: "Frontend Developer",
+    role: "Full Stack Developer",
     status: "Completed",
     pastelTheme: "pink",
     stats: {
@@ -71,7 +71,7 @@ export const projects: Project[] = [
       "Optimistic UI updates with zero lag",
       "Modular component decomposition for task items and filter controls",
     ],
-    role: "Frontend Developer",
+    role: "Full Stack Developer",
     status: "Completed",
     pastelTheme: "blue",
     stats: {
@@ -110,7 +110,7 @@ export const projects: Project[] = [
       "Clean separation between API data mapper and UI presentation layers",
       "Responsive CSS grid layout with smooth loading skeletons",
     ],
-    role: "Frontend Developer",
+    role: "Full Stack Developer",
     status: "Completed",
     pastelTheme: "yellow",
     stats: {
@@ -149,7 +149,7 @@ export const projects: Project[] = [
       "Fluid responsive layout adapting smoothly from mobile to widescreen monitors",
       "Strict layout containment to avoid layout shifts",
     ],
-    role: "Frontend Developer",
+    role: "Full Stack Developer",
     status: "Completed",
     pastelTheme: "purple",
     stats: {
@@ -188,7 +188,7 @@ export const projects: Project[] = [
       "CSS Grid product catalog with fluid column recalculations",
       "Smooth drawer transitions with focus management",
     ],
-    role: "Frontend Developer",
+    role: "Full Stack Developer",
     status: "Completed",
     pastelTheme: "green",
     stats: {

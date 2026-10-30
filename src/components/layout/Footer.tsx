@@ -37,13 +37,13 @@ export function Footer() {
                   Suraj Vishwakarma
                 </span>
                 <span className="text-xs text-rose-400 font-medium">
-                  Frontend Developer • ReactJS Specialist
+                  Full Stack Developer
                 </span>
               </div>
             </div>
 
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed font-normal pt-2">
-              Building clean, responsive, and user-friendly web interfaces. Focused on performance optimization, clean code, and fast web experiences.
+              Building clean, scalable, and user-friendly digital products that solve real-world problems.
             </p>
 
             <div className="flex items-center gap-2.5 pt-2">
@@ -182,7 +182,7 @@ export function Footer() {
               </div>
               <div className="pt-1">
                 <span className="block text-[11px] text-slate-500 font-semibold uppercase">Availability</span>
-                <span className="text-emerald-400 font-medium">Open to frontend roles & projects</span>
+                <span className="text-emerald-400 font-medium">Open to full-stack roles & projects</span>
               </div>
             </div>
           </div>

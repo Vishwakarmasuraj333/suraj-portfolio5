@@ -14,7 +14,6 @@ import {
   Phone,
   FileText,
   Code2,
-  Sparkles,
   GraduationCap,
 } from "lucide-react";
 
@@ -39,7 +38,7 @@ export function HeroSection() {
               <span>Hi, I&apos;m Suraj Vishwakarma</span>
               <span className="text-base animate-bounce">👋</span>
               <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-rose-500 mx-1" />
-              <span className="hidden sm:inline-block text-rose-600 dark:text-rose-400 font-bold">Frontend Developer</span>
+              <span className="hidden sm:inline-block text-rose-600 dark:text-rose-400 font-bold">Full Stack Developer</span>
             </div>
 
             {/* Main Headline */}
@@ -49,9 +48,9 @@ export function HeroSection() {
               that <span className="text-rose-500 brush-underline">people love</span>
             </h1>
 
-            {/* Description matching Resume */}
+            {/* Description */}
             <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-xl font-normal leading-relaxed mb-8">
-              Motivated Frontend Developer skilled in <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript (ES6+)</strong>, <strong>ReactJS</strong>, and <strong>Tailwind CSS</strong>, focused on building clean, responsive, and user-friendly interfaces with fast, accessible web experiences.
+              Motivated Full Stack Developer skilled in <strong>React</strong>, <strong>Next.js</strong>, <strong>Node.js</strong>, <strong>JavaScript (ES6+)</strong>, and <strong>Tailwind CSS</strong>, focused on building clean, scalable, and user-friendly web applications with fast, accessible web experiences.
             </p>
 
             {/* CTAs */}
@@ -147,7 +146,7 @@ export function HeroSection() {
                 {/* Hero Portrait Photo of Suraj Vishwakarma */}
                 <Image
                   src="/images/suraj.jpg"
-                  alt="Suraj Vishwakarma — Frontend Developer"
+                  alt="Suraj Vishwakarma — Full Stack Developer"
                   fill
                   priority
                   sizes="(max-width: 640px) 320px, (max-width: 1024px) 460px, 530px"
@@ -169,22 +168,22 @@ export function HeroSection() {
                     Available for Work
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
-                    Frontend Roles
+                    Full-time & Projects
                   </span>
                 </div>
               </div>
 
-              {/* Floating Badge 2: Bottom Left - "Frontend Developer | React & Tailwind" */}
+              {/* Floating Badge 2: Bottom Left - "Full Stack Developer | React • Node • Next.js" */}
               <div className="absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-4 z-20 backdrop-blur-md bg-white/95 dark:bg-slate-900/95 border border-white/80 dark:border-slate-700/80 rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 shadow-xl shadow-slate-900/10 flex items-center gap-3 hover:scale-105 transition-transform duration-300">
                 <div className="p-2 sm:p-2.5 rounded-xl bg-gradient-to-tr from-rose-500 to-pink-500 text-white shadow-xs">
                   <Code2 className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div className="flex flex-col text-left">
                   <span className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white leading-tight">
-                    Frontend Developer
+                    Full Stack Developer
                   </span>
                   <span className="text-[10px] sm:text-xs font-medium text-rose-500 dark:text-rose-400">
-                    ReactJS • Tailwind • JS
+                    React • Node • Next.js
                   </span>
                 </div>
               </div>

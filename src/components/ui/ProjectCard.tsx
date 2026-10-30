@@ -77,7 +77,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 </div>
                 <div className="flex-1">
                   <div className="text-[10px] font-extrabold text-slate-800 dark:text-white leading-tight">Suraj Vishwakarma</div>
-                  <div className="text-[8px] text-rose-500 font-bold">Frontend Developer</div>
+                  <div className="text-[8px] text-rose-500 font-bold">Full Stack Developer</div>
                   <div className="flex gap-1 mt-1">
                     <span className="text-[7px] px-1 bg-rose-50 dark:bg-rose-950/60 text-rose-600 rounded">React</span>
                     <span className="text-[7px] px-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded">Tailwind</span>

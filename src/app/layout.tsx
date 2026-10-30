@@ -17,18 +17,19 @@ const fontSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Suraj Vishwakarma | Frontend Developer",
+    default: "Suraj Vishwakarma | Full Stack Developer",
     template: "%s | Suraj Vishwakarma",
   },
   description:
-    "Motivated Frontend Developer skilled in HTML, CSS, JavaScript (ES6+), ReactJS, and Tailwind CSS. B.Sc. IT (9.04 CGPA - A Grade) | University of Mumbai.",
+    "Motivated Full Stack Developer skilled in React, Next.js, Node.js, JavaScript (ES6+), and modern web architectures. B.Sc. IT (9.04 CGPA - A Grade) | University of Mumbai.",
   keywords: [
     "Suraj Vishwakarma",
-    "Frontend Developer",
-    "ReactJS Developer",
-    "Tailwind CSS",
-    "JavaScript Developer",
+    "Full Stack Developer",
     "Next.js Developer",
+    "React Developer",
+    "Node.js Developer",
+    "JavaScript Developer",
+    "MERN Stack Developer",
     "Mumbai Developer",
     "University of Mumbai",
   ],
@@ -42,24 +43,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    title: "Suraj Vishwakarma | Frontend Developer",
+    title: "Suraj Vishwakarma | Full Stack Developer",
     description:
-      "I build digital products that people love. Frontend Developer crafting clean, responsive & user-friendly interfaces.",
+      "I build digital products that people love. Full Stack Developer crafting fast, scalable & user-friendly web applications.",
     siteName: siteConfig.name,
     images: [
       {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: "Suraj Vishwakarma — Frontend Developer",
+        alt: "Suraj Vishwakarma — Full Stack Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Suraj Vishwakarma | Frontend Developer",
+    title: "Suraj Vishwakarma | Full Stack Developer",
     description:
-      "I build digital products that people love. Frontend Developer crafting clean, responsive & user-friendly interfaces.",
+      "I build digital products that people love. Full Stack Developer crafting fast, scalable & user-friendly web applications.",
     images: [siteConfig.ogImage],
   },
   icons: {
@@ -78,7 +79,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Suraj Vishwakarma",
-    jobTitle: "Frontend Developer",
+    jobTitle: "Full Stack Developer",
     url: siteConfig.url,
     sameAs: [siteConfig.links.github, siteConfig.links.linkedin],
     alumniOf: {
@@ -87,13 +88,14 @@ export default function RootLayout({
       location: "Mumbai, Maharashtra, India",
     },
     knowsAbout: [
-      "Frontend Web Development",
+      "Full Stack Web Development",
       "ReactJS",
+      "Next.js",
+      "Node.js",
       "JavaScript (ES6+)",
+      "TypeScript",
       "HTML5 & CSS3",
       "Tailwind CSS",
-      "Bootstrap",
-      "Next.js",
       "Git & GitHub",
       "RESTful APIs",
     ],
